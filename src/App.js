@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import BaseColor from './base-color-picker';
+import ColorHarmony from './color-harmonies';
+import RadioButtonsGroup from'./monochromatic';
+import OutlinedTextFields from './test';
+
 
 class App extends Component {
   render() {
+    const styles = {
+      root: {
+        height: 300
+        
+      }
+    }
     return (
+      <div>
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+        <header className="App-header" style={styles.root}>
+        <h2>Enter A Color Name to Create Your Palette</h2>
         </header>
-      </div>
+        </div>
+        <div>
+        <BaseColor />
+        <ColorHarmony />
+        <RadioButtonsGroup />
+        <OutlinedTextFields />
+        </div>
+        </div>
     );
   }
 }
