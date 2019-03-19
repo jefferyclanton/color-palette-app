@@ -1,35 +1,39 @@
-import React, { Component } from 'react';
-import './App.css';
-import BaseColor from './base-color-picker';
-import ColorHarmony from './color-harmonies';
-import RadioButtonsGroup from'./monochromatic';
-import OutlinedTextFields from './test';
+  import React from 'react';
+  import './App.css';
+  import chroma from 'chroma-js';
 
 
-class App extends Component {
-  render() {
-    const styles = {
-      root: {
-        height: 300
-        
-      }
+  class App extends React.Component {
+    constructor(props) {
+    super(props);
+    this.state = {
+      hue: '',
+      color: ''
+    };
+    this.handleChange = this.handleChange.bind(this);
     }
-    return (
-      <div>
-      <div className="App">
-        <header className="App-header" style={styles.root}>
-        <h2>Enter A Color Name to Create Your Palette</h2>
-        </header>
-        </div>
-        <div>
-        <BaseColor />
-        <ColorHarmony />
-        <RadioButtonsGroup />
-        <OutlinedTextFields />
-        </div>
-        </div>
-    );
-  }
-}
+    handleChange(e) {
+      const color = chroma.valid(e.target.value)
+      ? chroma(e.target.value)
+        .saturate()
+        .alpha(1)
+        : chroma('white');
+      this.setState({
+        hue: e.target.value, color
+      })
+    }
 
-export default App;
+    render() {
+      const style = {
+        background: this.state.color,
+        height: 200
+      }
+      return (
+        <div style={style}>
+          <input value={this.state.hue} onChange={this.handleChange}></input>
+        </div>
+      );
+    }
+  }
+
+  export default App;
