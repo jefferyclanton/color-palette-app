@@ -13,13 +13,9 @@
     this.handleChange = this.handleChange.bind(this);
     }
     handleChange(e) {
-      const color = chroma.valid(e.target.value)
-      ? chroma(e.target.value)
-        .saturate()
-        .alpha(1)
-        : chroma('white');
       this.setState({
-        hue: e.target.value, color
+        hue: e.target.value,
+        color: chroma(e.target.value, 1, 0.5, "hsl")
       })
     }
 
@@ -30,6 +26,7 @@
       }
       return (
         <div style={style}>
+        <h2 style={{marginTop:0}}>Enter Hue In Degrees</h2>
           <input value={this.state.hue} onChange={this.handleChange}></input>
         </div>
       );
