@@ -8,8 +8,8 @@ class App extends React.Component {
     background: {
         hsl: {
           h: 0,
-          s: 0,
-          l: 0.2,
+          s: 1,
+          l: 0.5,
           a: 1
         }
       }
