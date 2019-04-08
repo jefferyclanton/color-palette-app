@@ -21,11 +21,6 @@ const styles = theme => ({
 });
 
 class SimpleSelect extends React.Component {
-  //constructor(props) {
-    //super(props);
-    //this.handleHarmonyChange = this.handleHarmonyChange.bind(this);
-  //}
-//
 
   render() {
     const { classes } = this.props;
