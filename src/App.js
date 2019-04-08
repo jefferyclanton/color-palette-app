@@ -2,26 +2,41 @@ import React from 'react';
 import { PhotoshopPicker } from 'react-color';
 import SimpleSelect from './drop-down-menu';
 import chroma from 'chroma-js';
+//import ColorAmount from './color-amount';
+//import HueSeparation from './hue-separation';
 
 class App extends React.Component {
- state = {
-    background: {
-        hsl: {
-          h: 0,
-          s: 1,
-          l: 0.5,
-          a: 1
-        }
-      }
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      background: {
+          hsl: {
+            h: 0,
+            s: 1,
+            l: 0.5,
+            a: 1
+          }
+        },
+        harmony: '',
+        hueSeparation: '',
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.harmonyChange = this.harmonyChange.bind(this);
+  }
 
   handleChange = (color) => {
     this.setState({
       background: color.hsl
     })
+  };
+
+  harmonyChange = (event) => {
+    this.setState({harmony: event.target.value})
   }
 
+
   render() {
+    const harmony = this.state.harmony;
     const style = {
       height: 275,
       width: 275,
@@ -29,6 +44,7 @@ class App extends React.Component {
       borderRadius: 500,
       margin: 'auto',
     }
+
     return (
       <div>
       <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginTop: 25}}>
@@ -37,7 +53,7 @@ class App extends React.Component {
     </div>
     <div style={style}></div>
       </div>
-      <SimpleSelect styling={this.state.background} />
+      <SimpleSelect styling={this.state.background} onChange={this.harmonyChange} harmonyChange={harmony} />
     </div>
     )
   }
