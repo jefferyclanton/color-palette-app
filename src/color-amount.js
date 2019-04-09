@@ -21,28 +21,29 @@ const styles = theme => ({
   });
 
 class ColorAmount extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state={
-            numberOfColors: '',
-        };
-        this.handleChange = this.handleChange.bind(this);
-    };
-
-    handleChange = (event) => {
-        this.setState({numberOfColors: event.target.value})
-    }
+    //constructor(props) {
+        //super(props);
+        //this.state={
+            //numberOfColors: '',
+        //};
+        //this.handleChange = this.handleChange.bind(this);
+    //};
+//
+    //handleChange = (event) => {
+        //this.setState({numberOfColors: event.target.value})
+    //}
 
     render() {
+      const monochromatic = this.props.value;
         const { classes } = this.props;
-
+        if(monochromatic === 'monochromatic') {
         return(
     <div>
       <form className={classes.root} autoComplete="off">
         <FormControl className={classes.formControl}>
           <Select
-            value={this.state.numberOfColors}
-            onChange={this.handleChange}
+            value={this.props.amount}
+            onChange={this.props.colors}
             displayEmpty
             name="color-amount"
             className={classes.selectEmpty}
@@ -61,6 +62,9 @@ class ColorAmount extends React.Component {
       </form> 
       </div>
         );
+        } else {
+          return <div style={{display: 'none'}}></div>
+        }
     }
 }
 
