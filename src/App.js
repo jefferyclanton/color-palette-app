@@ -3,7 +3,7 @@ import { PhotoshopPicker } from 'react-color';
 import SimpleSelect from './drop-down-menu';
 import chroma from 'chroma-js';
 import ColorAmount from './color-amount';
-//import HueSeparation from './hue-separation';
+import HueSeparation from './hue-separation';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,6 +24,7 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.harmonyChange = this.harmonyChange.bind(this);
     this.numberOfColors = this.numberOfColors.bind(this);
+    this.hueSeparation = this.hueSeparation.bind(this);
   }
 
   handleChange = (color) => {
@@ -38,6 +39,11 @@ class App extends React.Component {
 
   numberOfColors = (event) => {
     this.setState({numberOfColors: event.target.value})
+  }
+
+  hueSeparation = (event) => {
+    this.setState({hueSeparation: event.target.value});
+    event.preventDefault();
   }
 
 
@@ -61,6 +67,7 @@ class App extends React.Component {
       </div>
       <SimpleSelect styling={this.state.background} onChange={this.harmonyChange} harmonyChange={harmony} />
       <ColorAmount value={this.state.harmony} amount={this.state.numberOfColors} style={this.state.background} colors={this.numberOfColors}/>
+      <HueSeparation hueSeparation={this.state.hueSeparation} setSeparation={this.hueSeparation} choice={this.state.harmony} />
     </div>
     )
   }

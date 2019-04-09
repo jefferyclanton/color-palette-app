@@ -24,17 +24,11 @@ const styles = theme => ({
 });
 
 class HueSeparation extends React.Component {
-  state = {
-    degree: ''
-  };
-
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.value });
-  };
 
   render() {
+    const selection = this.props.choice;
     const { classes } = this.props;
-
+    if(selection === 'split' || selection === 'analogous') {
     return (
         <form className={classes.container} noValidate autoComplete="off">
                 <TextField
@@ -44,9 +38,13 @@ class HueSeparation extends React.Component {
           className={classes.textField}
           helperText="0 - 120 Degrees"
           margin="normal"
+          onChange={this.props.setSeparation}
         />
         </form>
     );
+    } else {
+      return <div style={{display:'none'}}></div>
+    }
   }
 }
 
