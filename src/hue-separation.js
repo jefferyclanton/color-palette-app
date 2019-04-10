@@ -26,7 +26,7 @@ const styles = theme => ({
 class HueSeparation extends React.Component {
 
   render() {
-    const selection = this.props.choice;
+    const selection = this.props.selection;
     const { classes } = this.props;
     if(selection === 'split' || selection === 'analogous') {
     return (

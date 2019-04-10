@@ -4,6 +4,7 @@ import SimpleSelect from './drop-down-menu';
 import chroma from 'chroma-js';
 import ColorAmount from './color-amount';
 import HueSeparation from './hue-separation';
+import Monochromatic from './monochromatic';
 
 class App extends React.Component {
   constructor(props) {
@@ -43,7 +44,6 @@ class App extends React.Component {
 
   hueSeparation = (event) => {
     this.setState({hueSeparation: event.target.value});
-    event.preventDefault();
   }
 
 
@@ -67,7 +67,8 @@ class App extends React.Component {
       </div>
       <SimpleSelect styling={this.state.background} onChange={this.harmonyChange} harmonyChange={harmony} />
       <ColorAmount value={this.state.harmony} amount={this.state.numberOfColors} style={this.state.background} colors={this.numberOfColors}/>
-      <HueSeparation hueSeparation={this.state.hueSeparation} setSeparation={this.hueSeparation} choice={this.state.harmony} />
+      <HueSeparation hueSeparation={this.state.hueSeparation} setSeparation={this.hueSeparation} selection={this.state.harmony} />
+      <Monochromatic numberOfColors={this.state.numberOfColors} choice={this.state.harmony} colors={this.state.background} />
     </div>
     )
   }
