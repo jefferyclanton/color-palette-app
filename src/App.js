@@ -5,6 +5,7 @@ import chroma from 'chroma-js';
 import ColorAmount from './color-amount';
 import HueSeparation from './hue-separation';
 import Monochromatic from './monochromatic';
+import Complementary from './complementary';
 
 class App extends React.Component {
   constructor(props) {
@@ -69,6 +70,7 @@ class App extends React.Component {
       <ColorAmount value={this.state.harmony} amount={this.state.numberOfColors} style={this.state.background} colors={this.numberOfColors}/>
       <HueSeparation hueSeparation={this.state.hueSeparation} setSeparation={this.hueSeparation} selection={this.state.harmony} />
       <Monochromatic numberOfColors={this.state.numberOfColors} choice={this.state.harmony} colors={this.state.background} />
+      <Complementary colors={this.state.background} choice={this.state.harmony} />
     </div>
     )
   }
