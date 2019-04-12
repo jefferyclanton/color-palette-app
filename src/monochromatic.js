@@ -1,22 +1,20 @@
 import React from 'react';
 import chroma from 'chroma-js';
 
-
 function Monochromatic(props) {
-    const styles = 
-        [
-            chroma(props.colors.h, props.colors.s - 0.25, props.colors.l, "hsl"),
-            chroma(props.colors.h, props.colors.s - 0.45, props.colors.l, "hsl"),
-            chroma(props.colors.h, props.colors.s - 0.65, props.colors.l, "hsl"),
-            chroma(props.colors.h, props.colors.s - 0.85, props.colors.l, "hsl"),
-            chroma(props.colors.h, props.colors.s - 0.95, props.colors.l, "hsl"),
-        ]
+    const colors = props.colors;
+    const styles = [
+        chroma(colors.h, colors.s, colors.l + 0.1, "hsl"),
+        chroma(colors.h, colors.s, colors.l + 0.2, "hsl"),
+        chroma(colors.h, colors.s, colors.l + 0.3, "hsl"),
+        chroma(colors.h, colors.s, colors.l + 0.4, "hsl"),
+        chroma(colors.h, colors.s, colors.l + 0.5, "hsl"),
+    ]
 
     if(props.choice === 'monochromatic' && props.numberOfColors) {
-        for(let i = 0; i < props.numberOfColors; i++) {
-        return <div>{styles.map((styles, number) => (<div style={{background: styles, height:100, width:200, display:'inline-block'}} key={number}></div>))}</div>
-        }
-     } else {
+        return<div>{styles.map((styles, number) => (<div style={{background:styles, height:100, width:'20%', display:'inline-block'}} key={number}></div>))} </div>
+    } 
+    else {
         return null;
     }
 }
