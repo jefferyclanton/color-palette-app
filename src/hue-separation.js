@@ -43,7 +43,7 @@ class HueSeparation extends React.Component {
         </form>
     );
     } else {
-      return <div style={{display:'none'}}></div>
+      return null;
     }
   }
 }
