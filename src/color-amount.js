@@ -21,18 +21,6 @@ const styles = theme => ({
   });
 
 class ColorAmount extends React.Component {
-    //constructor(props) {
-        //super(props);
-        //this.state={
-            //numberOfColors: '',
-        //};
-        //this.handleChange = this.handleChange.bind(this);
-    //};
-//
-    //handleChange = (event) => {
-        //this.setState({numberOfColors: event.target.value})
-    //}
-
     render() {
       const monochromatic = this.props.value;
         const { classes } = this.props;
@@ -63,7 +51,7 @@ class ColorAmount extends React.Component {
       </div>
         );
         } else {
-          return <div style={{display: 'none'}}></div>
+          return null;
         }
     }
 }

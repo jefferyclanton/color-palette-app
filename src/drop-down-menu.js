@@ -44,7 +44,7 @@ class SimpleSelect extends React.Component {
             <MenuItem value={'complementary'}>Complementary</MenuItem>
             <MenuItem value={'analogous'}>Analogous</MenuItem>
             <MenuItem value={'split'}>Split Complementary</MenuItem>
-            <MenuItem value={'triad'}>Triad</MenuItem>
+            <MenuItem value={'triadic'}>Triadic</MenuItem>
           </Select>
           <FormHelperText>Choose Desired Color Harmony</FormHelperText>
         </FormControl>
