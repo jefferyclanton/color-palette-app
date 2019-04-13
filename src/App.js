@@ -48,7 +48,6 @@ class App extends React.Component {
     this.setState({hueSeparation: event.target.value});
   }
 
-
   render() {
     const harmony = this.state.harmony;
     const style = {
