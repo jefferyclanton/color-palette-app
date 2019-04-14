@@ -24,11 +24,12 @@ const styles = theme => ({
 class HueSeparation extends React.Component {
 
   render() {
+
     const selection = this.props.selection;
     const { classes } = this.props;
     if(selection === 'split' || selection === 'analogous') {
     return (
-        <form className={classes.container} noValidate autoComplete="off">
+        <form className={classes.container} noValidate autoComplete="off" onSubmit={this.props.onSubmit}>
                 <TextField
           id="standard-helperText"
           label="Choose Hue Separation"
