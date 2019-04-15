@@ -16,11 +16,11 @@ function Split(props) {
         }
     }
 
-        function handleMinus() {
-            if(hueMinus < 360) {
-                return hueMinus + 360;
-            }
+    function handleMinus() {
+        if(hueMinus < 360) {
+            return hueMinus + 360;
         }
+    }
 
     if(props.choice === 'split' && props.separation) {
         return (
