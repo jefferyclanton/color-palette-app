@@ -4,8 +4,8 @@ import chroma from 'chroma-js';
 function Triadic(props) {
 const colors = props.colors;
 const styles = {
-    up: chroma(colors.h + 60, colors.s, colors.l, "hsl"),
-    down: chroma(colors.h - 60, colors.s, colors.l, "hsl"),
+    up: chroma(colors.h + 180 + 60, colors.s, colors.l, "hsl"),
+    down: chroma(colors.h + 180 - 60, colors.s, colors.l, "hsl"),
 }
 
 function handleUp(){

@@ -9,6 +9,7 @@ import Complementary from './complementary';
 import Triadic from './triadic';
 import Split from './split';
 import Analogous from './analogous';
+import Values from './values';
 
 class App extends React.Component {
   constructor(props) {
@@ -25,22 +26,19 @@ class App extends React.Component {
         harmony: '',
         numberOfColors: '',
         hueSeparation: '',
+        value: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.harmonyChange = this.harmonyChange.bind(this);
     this.numberOfColors = this.numberOfColors.bind(this);
     this.hueSeparation = this.hueSeparation.bind(this);
-    this.handleAccept = this.handleAccept.bind(this);
+    this.valueChange = this.valueChange.bind(this);
   }
 
   handleChange = (color) => {
     this.setState({
       background: color.hsl,
     })
-  };
-
-  handleAccept = () => {
-    
   };
 
   harmonyChange = (event) => {
@@ -59,6 +57,10 @@ class App extends React.Component {
     event.preventDefault();
   }
 
+  valueChange = (event) => {
+    this.setState({value: event.target.value})
+  }
+
   render() {
     const harmony = this.state.harmony;
     const style = {
@@ -71,11 +73,12 @@ class App extends React.Component {
     return (
       <div>
         <h1 style={{textAlign:'center'}}>Choose Your Base Color</h1>
-      <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'}}>
+      <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', flexWrap:'wrap'}}>
       <SketchPicker color={this.state.background} onChange={this.handleChange} width={350} disableAlpha={true} />
       <SimpleSelect styling={this.state.background} onChange={this.harmonyChange} harmonyChange={harmony} />
       <ColorAmount value={this.state.harmony} amount={this.state.numberOfColors} style={this.state.background} colors={this.numberOfColors}/>
-      <HueSeparation hueSeparation={this.state.hueSeparation} setSeparation={this.hueSeparation} selection={this.state.harmony} onSubmit={this.handleSubmit} />    
+      <HueSeparation hueSeparation={this.state.hueSeparation} setSeparation={this.hueSeparation} selection={this.state.harmony} onSubmit={this.handleSubmit} />
+      <Values color={this.state.background} onChange={this.valueChange} harmony={this.state.harmony} numberOfColors={this.state.numberOfColors} hueSeparation={this.state.hueSeparation} value={this.state.value} />
       </div>
       <div style={style}></div>
       <div>
