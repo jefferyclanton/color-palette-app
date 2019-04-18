@@ -21,7 +21,11 @@ class App extends React.Component {
             l: 1,
             //a: 1
         },
-        active: false,
+          hsv: {
+            h: 0,
+            S:  0,
+            v: 1,
+          },
         harmony: '',
         numberOfColors: '',
         hueSeparation: '',
@@ -37,6 +41,7 @@ class App extends React.Component {
   handleChange = (color) => {
     this.setState({
       hsl: color.hsl,
+      hsv: color.hsv,
     })
   };
 
@@ -62,7 +67,12 @@ class App extends React.Component {
 
   render() {
     const harmony = this.state.harmony;
-
+    //const values = [this.state.hsl.h.toFixed(2), this.state.hsl.s.toFixed(2), this.state.hsl.l.toFixed(2)];
+    //var stringValues = values.join(', '); 
+    //let hsl = [];
+    //function printValue() {
+      //hsl.push(stringValues)
+    //}
     let style = {
       height: 100,
       width: '100%',
@@ -80,13 +90,13 @@ class App extends React.Component {
         <SimpleSelect styling={this.state.hsl} onChange={this.harmonyChange} harmonyChange={harmony} />
         <ColorAmount value={this.state.harmony} amount={this.state.numberOfColors} style={this.state.hsl} colors={this.numberOfColors}/>
         <HueSeparation hueSeparation={this.state.hueSeparation} setSeparation={this.hueSeparation} selection={this.state.harmony} onSubmit={this.handleSubmit} />
-        <Values color={this.state.hsl} onChange={this.valueChange} harmony={this.state.harmony} numberOfColors={this.state.numberOfColors} hueSeparation={this.state.hueSeparation} value={this.state.value} />
+        <Values color={this.state.hsl} onChange={this.valueChange} harmony={this.state.harmony} numberOfColors={this.state.numberOfColors} hueSeparation={this.state.hueSeparation} value={this.state.value} />/
       </div>
-
+      
       <div style={style}></div>
 
       <div>
-        <Monochromatic numberOfColors={this.state.numberOfColors} choice={this.state.harmony} colors={this.state.hsl} />
+        <Monochromatic numberOfColors={this.state.numberOfColors} choice={this.state.harmony} colors={this.state.hsl} hsv={this.state.hsv} />
         <Complementary colors={this.state.hsl} choice={this.state.harmony} />
         <Triadic choice={this.state.harmony} colors={this.state.hsl} />
         <Split choice={this.state.harmony} colors={this.state.hsl} separation={this.state.hueSeparation} />

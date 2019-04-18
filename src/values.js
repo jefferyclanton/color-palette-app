@@ -20,6 +20,7 @@ const styles = theme => ({
     },
   });
 
+
 class Values extends React.Component {
     render() {
         const { classes } = this.props;
@@ -34,6 +35,7 @@ class Values extends React.Component {
             displayEmpty
             name="value"
             className={classes.selectEmpty}
+            onSubmit={this.props.onSubmit}
           >
             <MenuItem value="">
               <em>Need HSL or HSV?</em>
