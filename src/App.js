@@ -23,7 +23,7 @@ class App extends React.Component {
         },
           hsv: {
             h: 0,
-            S:  0,
+            S: 0,
             v: 1,
           },
         harmony: '',
@@ -43,7 +43,7 @@ class App extends React.Component {
       hsl: color.hsl,
       hsv: color.hsv,
     })
-  };
+  }
 
   harmonyChange = (event) => {
     this.setState({harmony: event.target.value})

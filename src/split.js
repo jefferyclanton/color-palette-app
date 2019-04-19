@@ -2,12 +2,11 @@ import React from 'react';
 import chroma from 'chroma-js';
 
 function Split(props) {
-    const colors = props.colors;
-    const huePlus = colors.h + 180 + props.separation;
-    const hueMinus = colors.h + 180 - props.separation;
+    const huePlus = props.colors.h + 180 + props.separation;
+    const hueMinus = props.colors.h + 180 - props.separation;
     const styles = {
-        plus: chroma(huePlus, colors.s, colors.l, "hsl"),
-        minus: chroma(hueMinus, colors.s, colors.l, "hsl"),
+        plus: chroma(huePlus, props.colors.s, props.colors.l, "hsl"),
+        minus: chroma(hueMinus, props.colors.s, props.colors.l, "hsl"),
     }
 
     function handlePlus() {
