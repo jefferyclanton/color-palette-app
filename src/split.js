@@ -26,8 +26,8 @@ function Split(props) {
     if(props.choice === 'split' && props.separation <= 120 && props.separation >= 1) {
         return (
             <div>
-                <div style={{background:styles.plus, height:100, width:'50%', display:'inline-block'}} onChange={handlePlus()}></div>
-                <div style={{background:styles.minus, height:100, width:'50%', display:'inline-block'}} onChange={handleMinus()}></div>
+                <div style={{background:styles.plus, height:100, width:'50%', display:'inline-block'}} onChange={handlePlus}></div>
+                <div style={{background:styles.minus, height:100, width:'50%', display:'inline-block'}} onChange={handleMinus}></div>
             </div>
         )
     } else if(props.choice === 'split' && props.separation > 120) {

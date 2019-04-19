@@ -67,12 +67,17 @@ class App extends React.Component {
 
   render() {
     const harmony = this.state.harmony;
-    //const values = [this.state.hsl.h.toFixed(2), this.state.hsl.s.toFixed(2), this.state.hsl.l.toFixed(2)];
-    //var stringValues = values.join(', '); 
-    //let hsl = [];
-    //function printValue() {
-      //hsl.push(stringValues)
-    //}
+    
+    const values = [this.state.hsl.h.toFixed(2), this.state.hsl.s.toFixed(2), this.state.hsl.l.toFixed(2)];
+    const stringValues = values.join(', '); 
+    
+    const hsvColors = this.state.hsv;
+    const hue = parseFloat(hsvColors.h);
+    const saturation = parseFloat(hsvColors.s);
+    const value = parseFloat(hsvColors.v);
+    const hsvValues = [hue.toFixed(2), saturation.toFixed(2), value.toFixed(2)];
+    const hsvStringValues = hsvValues.join(', '); 
+
     let style = {
       height: 100,
       width: '100%',
@@ -93,7 +98,14 @@ class App extends React.Component {
         <Values color={this.state.hsl} onChange={this.valueChange} harmony={this.state.harmony} numberOfColors={this.state.numberOfColors} hueSeparation={this.state.hueSeparation} value={this.state.value} />/
       </div>
       
-      <div style={style}></div>
+      <div style={style}>           
+       <h4 style={{color:'white', margin:'auto', textAlign:'center'}}>
+            Hex: {chroma(style.backgroundColor).hex()}<br/>
+            RGB: {chroma(style.backgroundColor).rgb().join(', ')}<br />
+            HSL: {stringValues}<br />
+            HSV: {hsvStringValues}
+         </h4>
+      </div>
 
       <div>
         <Monochromatic numberOfColors={this.state.numberOfColors} choice={this.state.harmony} colors={this.state.hsl} hsv={this.state.hsv} />
