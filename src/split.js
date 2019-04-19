@@ -2,8 +2,10 @@ import React from 'react';
 import chroma from 'chroma-js';
 
 function Split(props) {
-    const huePlus = props.colors.h + 180 + props.separation;
-    const hueMinus = props.colors.h + 180 - props.separation;
+    const separation = parseFloat(props.separation);
+    const hue = parseFloat(props.colors.h);
+    const huePlus = hue + 180 + separation;
+    const hueMinus = hue + 180 - separation;
     const styles = {
         plus: chroma(huePlus, props.colors.s, props.colors.l, "hsl"),
         minus: chroma(hueMinus, props.colors.s, props.colors.l, "hsl"),
@@ -24,8 +26,8 @@ function Split(props) {
     if(props.choice === 'split' && props.separation <= 120 && props.separation >= 1) {
         return (
             <div>
-                <div style={{background:styles.plus, height:100, width:'50%', display:'inline-block'}} onChange={handlePlus}></div>
-                <div style={{background:styles.minus, height:100, width:'50%', display:'inline-block'}} onChange={handleMinus}></div>
+                <div style={{background:styles.plus, height:100, width:'50%', display:'inline-block'}} onChange={handlePlus()}></div>
+                <div style={{background:styles.minus, height:100, width:'50%', display:'inline-block'}} onChange={handleMinus()}></div>
             </div>
         )
     } else if(props.choice === 'split' && props.separation > 120) {
