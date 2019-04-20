@@ -3,21 +3,7 @@ import chroma from 'chroma-js';
 
 function Monochromatic(props) {
     const colors = props.colors;
-    const userInput = props.colors.l;
-
-    const hslValues = [colors.h.toFixed(2), colors.s.toFixed(2), colors.l.toFixed(2)];
-    var stringValues = hslValues.join(', '); 
-    let hsl = [];
-    function printValue() {
-      hsl.push(stringValues)
-    }
-
-    //const hsv = [hsvColors.h.toFixed(2), hsvColors.s.toFixed(2), hsvColors.v.toFixed(2)];
-    //const hsvStringValues = hsv.join(', '); 
-    //let hsvArray = [];
-    //function printHsvValue() {
-      //hsvArray.push(hsvStringValues)
-    //}
+    let userInput = props.colors.l;
 
     let styles = [
         chroma(colors.h, colors.s, colors.l + 0.1, "hsl"),
@@ -37,11 +23,14 @@ function Monochromatic(props) {
     ]
 }
 
+
     const elements = [];
 
     if(props.choice === 'monochromatic' && props.numberOfColors) {
+        
         for(let i = 0; i < props.numberOfColors; i++) {
             const hex = chroma(styles[i]).hex();
+            const rgb = chroma(styles[i]).rgb().join(', ');
 
             let hslPrint = styles[i].hsl().slice(0, 3);
             hslPrint = hslPrint.map(function(element) {
@@ -55,10 +44,10 @@ function Monochromatic(props) {
             });
             const hsvTry = hsvPrint.join(', ');
 
-            elements.push(<div style={{background: styles[i], height:100, width:'20%', display:'inline-block', color:'white'}} key={[i]} onChange={printValue()}>
+            elements.push(<div style={{background: styles[i], height:100, width:'20%', display:'inline-block', color:'white'}} key={[i]}>
             <h4 style={{color:'white', margin:'auto'}}>
             Hex: {hex}<br/>
-            RGB: {chroma(styles[i]).rgb().join(', ')}<br />
+            RGB: {rgb}<br />
             HSL: {hslTry}<br />
             HSV: {hsvTry}
             </h4>

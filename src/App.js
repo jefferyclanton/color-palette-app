@@ -9,7 +9,6 @@ import Complementary from './complementary';
 import Triadic from './triadic';
 import Split from './split';
 import Analogous from './analogous';
-import Values from './values';
 
 class App extends React.Component {
   constructor(props) {
@@ -95,7 +94,6 @@ class App extends React.Component {
         <SimpleSelect styling={this.state.hsl} onChange={this.harmonyChange} harmonyChange={harmony} />
         <ColorAmount value={this.state.harmony} amount={this.state.numberOfColors} style={this.state.hsl} colors={this.numberOfColors}/>
         <HueSeparation hueSeparation={this.state.hueSeparation} setSeparation={this.hueSeparation} selection={this.state.harmony} onSubmit={this.handleSubmit} />
-        <Values color={this.state.hsl} onChange={this.valueChange} harmony={this.state.harmony} numberOfColors={this.state.numberOfColors} hueSeparation={this.state.hueSeparation} value={this.state.value} />/
       </div>
       
       <div style={style}>           
